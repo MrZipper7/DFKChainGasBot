@@ -65,12 +65,12 @@ class DFKGasBot(commands.Bot):
 
             if cv_margin > 1:
                 pct = round((cv_margin - 1) * 100)
-                activity_string = f"Realm Gas: CV +{pct}%"
+                activity_string = f"CV Gas $: +{pct}% vs SD"
             elif cv_margin < 1:
                 pct = round((1 - cv_margin) * 100)
-                activity_string = f"Realm Gas: CV -{pct}%"
+                activity_string = f"CV Gas $: -{pct}% vs SD"
             else:
-                activity_string = "Realm Gas: +/- 0%"
+                activity_string = "CV Gas $: +/- 0% vs SD"
         except Exception:
             return ""
         return activity_string
@@ -85,12 +85,12 @@ class DFKGasBot(commands.Bot):
         self.cv_base_fee_gwei, self.sd_base_fee_gwei = await self.get_current_gas()
         self.gas_comparison_string = await self.compare_realm(self.cv_base_fee_gwei, self.sd_base_fee_gwei)
 
-    @tasks.loop(seconds=10)
+    @tasks.loop(seconds=12)
     async def price_info(self):
         activity_string = f"Base Fee: {round(self.cv_base_fee_gwei, 1)} gwei"
         await self.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=activity_string))
 
-        await asyncio.sleep(5)
+        await asyncio.sleep(6)
 
         activity_string = self.gas_comparison_string
         if activity_string != "":
