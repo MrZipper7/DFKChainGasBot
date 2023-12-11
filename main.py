@@ -99,4 +99,4 @@ class DFKGasBot(commands.Bot):
 
 bot = DFKGasBot(command_prefix="|")
 
-bot.run(token=os.getenv("TOKEN"))
+bot.run(os.getenv("TOKEN"))
