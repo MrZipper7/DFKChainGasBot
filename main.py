@@ -18,7 +18,7 @@ logger = logging.getLogger("DFKGasBot")
 logger.setLevel(logging.DEBUG)
 logging.basicConfig(level=logging.INFO, format=log_format, stream=sys.stdout)
 
-rpc_address = ['https://subnets.avax.network/defi-kingdoms/dfk-chain/rpc', 'https://klaytn.rpc.defikingdoms.com/']
+rpc_address = ['https://subnets.avax.network/defi-kingdoms/dfk-chain/rpc', 'https://kaia.rpc.defikingdoms.com/']
 
 
 class DFKGasBot(commands.Bot):
